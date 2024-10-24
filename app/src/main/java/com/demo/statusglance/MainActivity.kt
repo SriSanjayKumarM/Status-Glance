@@ -1,6 +1,7 @@
 package com.demo.statusglance
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -11,11 +12,12 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.view.WindowCompat
-import com.demo.statusglance.ui.theme.StatusGlanceTheme
 import com.demo.statusglance.topbar.TopBar
+import com.demo.statusglance.ui.theme.StatusGlanceTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,6 +44,9 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun StatusApp(modifier: Modifier = Modifier) {
+
+    val context = LocalContext.current // Get the current context for Toast
+
     val buttonIcons =
         listOf(
         R.drawable.qr_code,
@@ -50,11 +55,21 @@ fun StatusApp(modifier: Modifier = Modifier) {
         R.drawable.dots
     ) // List of icons to be displayed as buttons
 
+    val buttonClickActions =
+        listOf(
+            { Toast.makeText(context, "QR Code Clicked", Toast.LENGTH_SHORT).show() },
+            { Toast.makeText(context, "Camera Clicked", Toast.LENGTH_SHORT).show() },
+            { Toast.makeText(context, "Search Clicked", Toast.LENGTH_SHORT).show() },
+            { Toast.makeText(context, "Menu Clicked", Toast.LENGTH_SHORT).show() }
+        )
+
     Scaffold(
         topBar = {
             TopBar(
                 title = stringResource(R.string.title),
-                buttonIcons = buttonIcons // Calling TopBar function from TopBar.kt
+                buttonIcons = buttonIcons, // Calling TopBar function from TopBar.kt
+                buttonClickActions = buttonClickActions // Passing the click actions to TopBar
+
             )
         }
     ) { innerPadding ->
