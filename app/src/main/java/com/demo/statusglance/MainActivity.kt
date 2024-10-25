@@ -16,6 +16,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.view.WindowCompat
+import com.demo.statusglance.bottombar.BottomBar
 import com.demo.statusglance.topbar.TopBar
 import com.demo.statusglance.ui.theme.StatusGlanceTheme
 
@@ -45,7 +46,7 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun StatusApp(modifier: Modifier = Modifier) {
 
-    val context = LocalContext.current // Get the current context for Toast
+    val context = LocalContext.current // Getting the current context for Toast
 
     val buttonIcons =
         listOf(
@@ -61,17 +62,41 @@ fun StatusApp(modifier: Modifier = Modifier) {
             { Toast.makeText(context, "Camera Clicked", Toast.LENGTH_SHORT).show() },
             { Toast.makeText(context, "Search Clicked", Toast.LENGTH_SHORT).show() },
             { Toast.makeText(context, "Menu Clicked", Toast.LENGTH_SHORT).show() }
-        )
+        ) // List of top bar icons actions
+
+    val bottomButtons =
+        listOf(
+            R.drawable.chats,
+            R.drawable.updates,
+            R.drawable.community,
+            R.drawable.call,
+        ) // List of Bottom icons to be displayed
+
+    val bottomButtonActions =
+        listOf(
+            { Toast.makeText(context, "Chat with your friends", Toast.LENGTH_SHORT).show() },
+            { Toast.makeText(context, "You are on this page", Toast.LENGTH_SHORT).show() },
+            { Toast.makeText(context, "Join Communities", Toast.LENGTH_SHORT).show() },
+            { Toast.makeText(context, "Calls are not allowed", Toast.LENGTH_SHORT).show() }
+        ) // List of bottom bar icons actions
 
     Scaffold(
+
         topBar = {
             TopBar(
                 title = stringResource(R.string.title),
                 buttonIcons = buttonIcons, // Calling TopBar function from TopBar.kt
                 buttonClickActions = buttonClickActions // Passing the click actions to TopBar
+            )
+        },
 
+        bottomBar = { // Add this line to include the BottomBar
+            BottomBar(
+                bottomButtons = bottomButtons,
+                bottomButtonActions = bottomButtonActions
             )
         }
+
     ) { innerPadding ->
         Surface(
             modifier = Modifier
