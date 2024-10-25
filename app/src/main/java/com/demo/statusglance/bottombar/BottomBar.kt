@@ -24,6 +24,8 @@ fun BottomBar(
 ){
     val iconColor = if (isSystemInDarkTheme()) Color.White else Color.Black
 
+    val highlightColor = Color(0xFF9CCC65)
+
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -36,11 +38,12 @@ fun BottomBar(
                 onClick = bottomButtonActions[index],
                 modifier = Modifier.size(100.dp),
             ) {
+                val tintColor = if (index == 1) highlightColor else iconColor
                 Image(
                     painter = painterResource(iconRes),
                     contentDescription = null,
                     modifier = Modifier.size(40.dp),
-                    colorFilter = ColorFilter.tint(iconColor)
+                    colorFilter = ColorFilter.tint(tintColor)
                 )
             }
             Spacer(modifier = Modifier.width(10.dp)) // Adding space between buttons
