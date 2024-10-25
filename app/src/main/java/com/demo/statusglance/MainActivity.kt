@@ -1,22 +1,34 @@
 package com.demo.statusglance
 
+import android.graphics.fonts.FontStyle
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.material3.Button
+import androidx.compose.material3.Card
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.core.view.WindowCompat
 import com.demo.statusglance.bottombar.BottomBar
+import com.demo.statusglance.mystatus.StatusImageRow
+import com.demo.statusglance.mystatus.StatustextRow
 import com.demo.statusglance.topbar.TopBar
 import com.demo.statusglance.ui.theme.StatusGlanceTheme
 
@@ -50,11 +62,11 @@ fun StatusApp(modifier: Modifier = Modifier) {
 
     val buttonIcons =
         listOf(
-        R.drawable.qr_code,
-        R.drawable.camera,
-        R.drawable.search,
-        R.drawable.dots
-    ) // List of icons to be displayed as buttons
+            R.drawable.qr_code,
+            R.drawable.camera,
+            R.drawable.search,
+            R.drawable.dots
+        ) // List of icons to be displayed as buttons
 
     val buttonClickActions =
         listOf(
@@ -102,8 +114,17 @@ fun StatusApp(modifier: Modifier = Modifier) {
             modifier = Modifier
                 .fillMaxSize()
                 .padding(innerPadding)
+                .background(Color.White)
         ) {
-
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp)
+            ) {
+                StatustextRow()
+                Spacer(modifier = Modifier.height(24.dp)) // Space between rows
+                StatusImageRow()
+            }
         }
     }
 }

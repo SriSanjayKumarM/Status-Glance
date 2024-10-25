@@ -46,7 +46,7 @@ fun BottomBar(
                     colorFilter = ColorFilter.tint(tintColor)
                 )
             }
-            Spacer(modifier = Modifier.width(10.dp)) // Adding space between buttons
+            Spacer(modifier = Modifier.width(4.dp)) // Adding space between buttons
         }
     }
 
