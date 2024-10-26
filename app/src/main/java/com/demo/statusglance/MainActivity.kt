@@ -125,6 +125,15 @@ fun StatusApp(modifier: Modifier = Modifier) {
                 Spacer(modifier = Modifier.height(24.dp)) // Space between rows
                 StatusImageRow()
             }
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp)
+            ) {
+                StatustextRow()
+                Spacer(modifier = Modifier.height(24.dp)) // Space between rows
+                StatusImageRow()
+            }
         }
     }
 }
