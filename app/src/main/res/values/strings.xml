@@ -1,4 +1,18 @@
 <resources>
     <string name="app_name">Status Glance</string>
     <string name="title">Updates</string>
+    <string name="name1">The One Who Always Knows</string>
+    <string name="name2">Friend from the College Days</string>
+    <string name="name3">Praveen Brother</string>
+    <string name="name4">Childhood Friend</string>
+    <string name="name5">Arun Family Friend</string>
+    <string name="name6">Mom Whatsapp Number</string>
+    <string name="name7">Crush in dreams</string>
+    <string name="time1">35 minutes ago</string>
+    <string name="time2">20 minutes ago</string>
+    <string name="time3">updated 10:07 pm</string>
+    <string name="time4">updated 10:02 pm</string>
+    <string name="time5">updated 9:41 pm</string>
+    <string name="time6">updated 8:24 pm</string>
+    <string name="time7">updated 5:36 pm</string>
 </resources>

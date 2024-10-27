@@ -50,7 +50,7 @@ fun BottomBar(
                     )
                     if (index == 0) {
                         Image(
-                            painter = painterResource(R.drawable.newmsg),
+                            painter = painterResource(R.drawable.ninetynine),
                             contentDescription = "New Messages",
                             modifier = Modifier
                                 .size(25.dp)
